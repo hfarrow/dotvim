@@ -460,7 +460,7 @@ let g:mapleader = ','
     set noswapfile
 
     call EnsureExists('~/.vim/.cache')
-    call EnsureExists('~/.vim/cache/unite')
+    call EnsureExists('~/.vim/.cache/unite')
     call EnsureExists('~/.vim/.cache')
     call EnsureExists(&undodir)
     call EnsureExists(&backupdir)
