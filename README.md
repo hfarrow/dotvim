@@ -6,17 +6,19 @@ This repository contains a vim distrobution created by and for Heath Farrow.
 Installation
 ---------------------------
 1.  The recommended method is to add this repo as a git submodule.
-        mkdir ~/.dotvim/
-        cd ~/.dotvim
-        git init
-        git submodule add git@github.com:hfarrow/dotvim.git
+
+    mkdir ~/.dotvim/
+    cd ~/.dotvim
+    git init
+    git submodule add git@github.com:hfarrow/dotvim.git
 
 2.  Use symbolic links for ~/.vim and ~/.vimrc. Remove or backup those files first if they exist already.
-        cd ~
-        mv .vim .vim.old
-        mv .vimrc .vimrc.old
-        ln -s .dotvim/ .vim
-        ln -s .dotvim/vimrc .vimrc
+
+    cd ~
+    mv .vim .vim.old
+    mv .vimrc .vimrc.old
+    ln -s .dotvim/ .vim
+    ln -s .dotvim/vimrc .vimrc
 
 3.  Run vim or gvim and you should be prompted to install the default plugins. You may have to press enter a few times
     during this process. You may say an error when initially starting vim but usually it is safe to ignore. The ignores
