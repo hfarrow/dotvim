@@ -14,7 +14,7 @@ Installation
     git submodule add git@github.com:hfarrow/dotvim.git
     ```
 
-    2.  Use symbolic links for ~/.vim and ~/.vimrc. Remove or backup those files first if they exist already.
+2.  Use symbolic links for ~/.vim and ~/.vimrc. Remove or backup those files first if they exist already.
 
     ```
     cd ~
