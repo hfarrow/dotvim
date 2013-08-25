@@ -176,7 +176,7 @@ let g:mapleader = ','
             " First time user will not have installed unite.vim yet so they will
             " get an error before the plugins have been installed.
             " Solution: Move all plugin configs to after NeoBundleCheck
-            if neobundle#is_sourced('unite.vim')
+            if neobundle#is_installed('unite.vim')
                 call unite#filters#matcher_default#use(['matcher_fuzzy'])
                 call unite#filters#sorter_default#use(['sorter_rank'])
                 call unite#set_profile('files', 'smartcase', 1)
@@ -459,6 +459,8 @@ let g:mapleader = ','
     set directory=~/.vim/.cache/swap
     set noswapfile
 
+    call EnsureExists('~/.vim/.cache')
+    call EnsureExists('~/.vim/cache/unite')
     call EnsureExists('~/.vim/.cache')
     call EnsureExists(&undodir)
     call EnsureExists(&backupdir)
