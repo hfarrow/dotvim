@@ -121,7 +121,11 @@ let g:mapleader = ','
     endif " }}}
 
     if count(s:settings.plugin_groups, 'cpp') "{{{
-        NeoBundleLazy 'vim-scripts/a.vim' {'autoload':{'filetypes' : ['cpp']}}
+        NeoBundleLazy 'vim-scripts/a.vim', {'autoload' : {'filetypes' : ['cpp']}} " {{{
+            let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
+            let g:alternateSearchPath = g:alternateSearchPath . ',sfr:../../source,sfr:../../src,sfr:../../include,sfr:../../inc'
+            let g:alternateSearchPath = g:alternateSearchPath . ',sfr:../../../source,sfr:../../../src,sfr:../../../include,sfr:../../../inc'
+        " }}}
     endif " }}}
 
     if count(s:settings.plugin_groups, 'scm') "{{{
@@ -213,6 +217,8 @@ let g:mapleader = ','
             nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
             nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
             nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+            " Search for word under cursor
+            nmap <silent> [unite]w [unite]/<C-r><C-w><cr>
 
             map <C-F11> <Plug>(unite_redraw)
         " }}}
@@ -263,6 +269,8 @@ let g:mapleader = ','
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType markdown setlocal nolist
     autocmd FileType vim setlocal fdm=marker fdls=0 keywordprg=:help
+    autocmd FileType cpp setlocal fdls=99
+    autocmd FileType c setlocal fdls=99
 " }}}
 
 " Functions {{{
@@ -345,9 +353,9 @@ let g:mapleader = ','
     nnoremap Y y$
 
     " Alt-j insert line below, Alt-k insert line above
-    " Ctr-J delete line below, Ctr-K delte live above
-    nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
-    nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+    " Alt-J delete line below, Alt-K delte live above
+    nnoremap <silent><A-J> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+    nnoremap <silent><A-K> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
     nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
     nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
@@ -421,7 +429,7 @@ let g:mapleader = ','
     set mouse=a                             "enable mouse
     set history=1000                        "number of command lines to remember
     set ttyfast                             "assume fast terminal connection
-    set showcmd                             "show information in last line of editor
+    "set showcmd                             "show information in last line of editor
     set foldenable                          "enable folds by default
     set foldmethod=syntax                   "fold via syntax of files
     set foldlevelstart=99                   "open all folds by default

@@ -31,9 +31,8 @@ Installation
 
 Configuration
 ---------------------------
-* The base configuration is contained with in hfvimrc. This file installs plugins and gives them a default
-   configuration. hfvimrc also sets many vim settings and mappings which can be overriden in vimrc after hfvimrc has
-   been sourced.
+* The base configuration is contained within hfvimrc. This file installs plugins and gives them a default
+   configuration. hfvimrc also sets many vim settings and mappings which can be overridden in vimrc after hfvimrc has been sourced.
 
 * Custom user configuration is made in vimrc after the line that sources gfvimrc. There are several global settings that
   can be used to control what plugins and plugin groups hfvim will load or exclude. Such settings must be set before
