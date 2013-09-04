@@ -172,7 +172,14 @@ let g:mapleader = ','
         NeoBundle 'kien/ctrlp.vim' " {{{
             nnoremap <A-p> :CtrlPMRU<cr>
         " }}}
-        NeoBundle 'vim-scripts/taglist.vim'
+        NeoBundle 'vim-scripts/taglist.vim' "{{{
+			let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
+			let Tlist_Use_Right_Window = 1
+			let Tlist_Show_One_File = 1
+			let Tlist_Display_Tag_Scope = 1
+			let Tlist_Enable_Fold_Column = 0
+			map <leader>l :TlistToggle<CR>
+		"}}}
     endif " }}}
 
     if count(s:settings.plugin_groups, "unite") "{{{
@@ -374,7 +381,7 @@ let g:mapleader = ','
     " turn syntax highlighting on
     set t_Co=256
     syntax on
-    set guifont=Inconsolata\ Medium\ 10
+    set guifont=Inconsolata\ for\ Powerline:h14
 
     "colorscheme slate
     "colorscheme slate2
