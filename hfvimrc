@@ -243,7 +243,8 @@ let g:mapleader = ','
             \ }
         NeoBundle 'scrooloose/syntastic'
         NeoBundle 'garbas/vim-snipmate' " {{{
-            imap <C-e> <Plug>snipMateNextOrTrigger
+            imap <C-s> <esc>a<Plug>snipMateNextOrTrigger
+            smap <C-s> <Plug>snipMateNextOrTrigger
         " }}}
         NeoBundle 'honza/vim-snippets'
     endif " }}}
