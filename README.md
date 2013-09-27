@@ -12,6 +12,8 @@ Installation
     cd ~/.dotvim
     git init
     git submodule add git@github.com:hfarrow/dotvim.git
+    git submodule init
+    git submodule update
     ```
 
 2.  Use symbolic links for ~/.vim and ~/.vimrc. Remove or backup those files first if they exist already.
