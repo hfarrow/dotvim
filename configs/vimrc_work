@@ -63,4 +63,8 @@ noremap <silent> <Leader>tr :call OpenMruFile()<CR>
 
 noremap <silent> <Leader>tw :FufFileWithFullCwd **/<C-r><C-w><CR>
 
+nnoremap <space>w :Ack!<C-r><C-w><cr>
+nnoremap <space>/ :Ack!
 
+call EnsureExists('~/.vim/.cache/fuf-data')
+let g:fuf_dataDir = '~/.vim/.cache/fuf-data'

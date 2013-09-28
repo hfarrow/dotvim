@@ -477,7 +477,6 @@ let g:mapleader = ','
 
     call EnsureExists('~/.vim/.cache')
     call EnsureExists('~/.vim/.cache/unite')
-    call EnsureExists('~/.vim/.cache')
     call EnsureExists(&undodir)
     call EnsureExists(&backupdir)
     call EnsureExists(&directory)
