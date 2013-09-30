@@ -42,6 +42,7 @@ let g:mapleader = ','
     let s:settings.plugin_groups = []
     call add(s:settings.plugin_groups, 'core')
     call add(s:settings.plugin_groups, 'cpp')
+    call add(s:settings.plugin_groups, 'actionscript')
     call add(s:settings.plugin_groups, 'scm')
     call add(s:settings.plugin_groups, 'editing')
     call add(s:settings.plugin_groups, 'visual')
@@ -53,7 +54,7 @@ let g:mapleader = ','
 
     " exclude all language-specific plugins by default
     if !exists('g:hfvim_settings.plugin_groups_excluded')
-        let g:hfvim_settings.plugin_groups_excluded = ['cpp']
+        let g:hfvim_settings.plugin_groups_excluded = ['cpp', 'actionscript']
     endif
 
     for group in g:hfvim_settings.plugin_groups_excluded
@@ -104,6 +105,7 @@ let g:mapleader = ','
         NeoBundle 'flazz/vim-colorschemes'
         NeoBundle "MarcWeber/vim-addon-mw-utils"
         NeoBundle "tomtom/tlib_vim",
+        NeoBundle "vim-scripts/L9"
         NeoBundle 'Shougo/vimproc.vim',
             \ {'name' : 'vimproc',
             \  'build' :
@@ -122,9 +124,11 @@ let g:mapleader = ','
 
     if count(s:settings.plugin_groups, 'cpp') "{{{
         NeoBundleLazy 'vim-scripts/a.vim', {'autoload' : {'filetypes' : ['cpp']}} " {{{
-            let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
-            let g:alternateSearchPath = g:alternateSearchPath . ',sfr:../../source,sfr:../../src,sfr:../../include,sfr:../../inc'
-            let g:alternateSearchPath = g:alternateSearchPath . ',sfr:../../../source,sfr:../../../src,sfr:../../../include,sfr:../../../inc'
+        " }}}
+    endif " }}}
+
+    if count(s:settings.plugin_groups, 'actionscript') "{{{
+        NeoBundle 'jeroenbourgois/vim-actionscript' " {{{
         " }}}
     endif " }}}
 
@@ -250,6 +254,10 @@ let g:mapleader = ','
     endif " }}}
 
     if count(s:settings.plugin_groups, "misc") "{{{
+        NeoBundle 'mileszs/ack.vim' " {{{
+            nnoremap <Leader>w :Ack!<C-r><C-w><cr>
+            nnoremap <Leader>/ :Ack!
+        " }}}
     endif " }}}
 
     " finish loading {{{
