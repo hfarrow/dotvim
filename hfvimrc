@@ -114,17 +114,18 @@ let g:mapleader = ','
             \       'windows' : 'make -f make_mingw32.mak'
             \   }
             \ }
-        NeoBundle 'Lokaltog/powerline', " {{{
-            set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-            set laststatus=2
+        "NeoBundle 'Lokaltog/powerline', " {{{
+        "    set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+        "    set laststatus=2
+        " }}}
+        NeoBundle 'vim-scripts/localvimrc' " {{{
+           let g:localvimrc_sandbox = 0
+           let g:localvimrc_persistent = 1
         " }}}
     endif " }}}
 
     if count(s:settings.plugin_groups, 'cpp') "{{{
         NeoBundleLazy 'vim-scripts/a.vim', {'autoload' : {'filetypes' : ['cpp']}} " {{{
-            let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc'
-            let g:alternateSearchPath = g:alternateSearchPath . ',sfr:../../source,sfr:../../src,sfr:../../include,sfr:../../inc'
-            let g:alternateSearchPath = g:alternateSearchPath . ',sfr:../../../source,sfr:../../../src,sfr:../../../include,sfr:../../../inc'
         " }}}
     endif " }}}
 
@@ -447,12 +448,49 @@ let g:mapleader = ','
     set softtabstop=4
 " }}}
 
+" Pyclewn {{{
+
+    function! StartPyclewn()
+        exec 'Pyclewn'
+        exec 'Cinferiortty'
+        exec 'Cfile build/Debug/Template'
+    endfunction
+
+    function! QuitPyclewn()
+        exec 'nbclose'
+    endfunction
+
+    let g:pyclewn_args="--terminal=konsole,-e"
+    nnoremap <F8> :Crun<CR>
+    nnoremap <S-F8> :Ckill<CR>
+    nnoremap <F9> :Ccontinue<CR>
+    nnoremap <F10> :Cnext<CR>
+    nnoremap <F11> :Cstep<CR>
+    nnoremap <S-F11> :Cfinish<CR>
+    nnoremap <F12> :call StartPyclewn()<CR>
+    nnoremap <S-F12> :call QuitPyclewn()<CR>
+
+    nnoremap <Leader>za :Cinfo args<CR>
+    nnoremap <Leader>zl :Cinfo locals<CR>
+    nnoremap <Leader>zb :Cinfo breakpoints<CR>
+    nnoremap <Leader>zu :Cup<CR>
+    nnoremap <Leader>zd :Cdown<CR>
+    nnoremap <Leader>zk :exe "Cbreak %:p:" . line(".")<CR>
+    nnoremap <Leader>zK :exe "Cclear %:p:" . line(".")<CR>
+    nnoremap <Leader>zw :Cwhere<CR>
+" }}}
+
 " Tags {{{
     set showfulltag                         "show entire tag when completing from tags
     set tags+=~/.vim/tags/cpp
 " }}}
 
 " vim file/folder management {{{
+    " persistent viminfo
+    if has('viminfo')
+        set vi^=!
+    endif
+    
     " persistent undo
     if exists('+undofile')
         set undofile
