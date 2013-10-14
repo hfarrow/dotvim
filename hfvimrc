@@ -116,9 +116,13 @@ let g:mapleader = ','
             \       'windows' : 'make -f make_mingw32.mak'
             \   }
             \ }
-        "NeoBundle 'Lokaltog/powerline', " {{{
-        "    set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-        "    set laststatus=2
+        NeoBundle 'Lokaltog/powerline', " {{{
+            "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+            "set laststatus=2
+        " }}}
+        NeoBundle 'bling/vim-airline' " {{{
+            let g:airline_powerline_fonts=1
+            set laststatus=2
         " }}}
         NeoBundle 'vim-scripts/localvimrc' " {{{
            let g:localvimrc_sandbox = 0
@@ -394,7 +398,7 @@ let g:mapleader = ','
     " turn syntax highlighting on
     set t_Co=256
     syntax on
-    set guifont=Inconsolata\ for\ Powerline:h14
+    set guifont=Inconsolata\ for\ Powerline\ 11
 
     "colorscheme slate
     "colorscheme slate2
