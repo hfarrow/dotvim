@@ -42,6 +42,7 @@ let g:mapleader = ','
     let s:settings.plugin_groups = []
     call add(s:settings.plugin_groups, 'core')
     call add(s:settings.plugin_groups, 'cpp')
+    call add(s:settings.plugin_groups, 'actionscript')
     call add(s:settings.plugin_groups, 'scm')
     call add(s:settings.plugin_groups, 'editing')
     call add(s:settings.plugin_groups, 'visual')
@@ -53,7 +54,7 @@ let g:mapleader = ','
 
     " exclude all language-specific plugins by default
     if !exists('g:hfvim_settings.plugin_groups_excluded')
-        let g:hfvim_settings.plugin_groups_excluded = ['cpp']
+        let g:hfvim_settings.plugin_groups_excluded = ['cpp', 'actionscript']
     endif
 
     for group in g:hfvim_settings.plugin_groups_excluded
@@ -104,6 +105,7 @@ let g:mapleader = ','
         NeoBundle 'flazz/vim-colorschemes'
         NeoBundle "MarcWeber/vim-addon-mw-utils"
         NeoBundle "tomtom/tlib_vim",
+        NeoBundle "vim-scripts/L9"
         NeoBundle 'Shougo/vimproc.vim',
             \ {'name' : 'vimproc',
             \  'build' :
@@ -126,6 +128,11 @@ let g:mapleader = ','
 
     if count(s:settings.plugin_groups, 'cpp') "{{{
         NeoBundleLazy 'vim-scripts/a.vim', {'autoload' : {'filetypes' : ['cpp']}} " {{{
+        " }}}
+    endif " }}}
+
+    if count(s:settings.plugin_groups, 'actionscript') "{{{
+        NeoBundle 'jeroenbourgois/vim-actionscript' " {{{
         " }}}
     endif " }}}
 
@@ -173,7 +180,14 @@ let g:mapleader = ','
         NeoBundle 'kien/ctrlp.vim' " {{{
             nnoremap <A-p> :CtrlPMRU<cr>
         " }}}
-        NeoBundle 'vim-scripts/taglist.vim'
+        NeoBundle 'vim-scripts/taglist.vim' "{{{
+			let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
+			let Tlist_Use_Right_Window = 1
+			let Tlist_Show_One_File = 1
+			let Tlist_Display_Tag_Scope = 1
+			let Tlist_Enable_Fold_Column = 0
+			map <leader>l :TlistToggle<CR>
+		"}}}
     endif " }}}
 
     if count(s:settings.plugin_groups, "unite") "{{{
@@ -237,12 +251,17 @@ let g:mapleader = ','
             \ }
         NeoBundle 'scrooloose/syntastic'
         NeoBundle 'garbas/vim-snipmate' " {{{
-            imap <C-e> <Plug>snipMateNextOrTrigger
+            imap <C-s> <esc>a<Plug>snipMateNextOrTrigger
+            smap <C-s> <Plug>snipMateNextOrTrigger
         " }}}
         NeoBundle 'honza/vim-snippets'
     endif " }}}
 
     if count(s:settings.plugin_groups, "misc") "{{{
+        NeoBundle 'mileszs/ack.vim' " {{{
+            nnoremap <Leader>w :Ack!<C-r><C-w><cr>
+            nnoremap <Leader>/ :Ack!
+        " }}}
     endif " }}}
 
     " finish loading {{{
@@ -375,7 +394,7 @@ let g:mapleader = ','
     " turn syntax highlighting on
     set t_Co=256
     syntax on
-    set guifont=Inconsolata\ Medium\ 10
+    set guifont=Inconsolata\ for\ Powerline:h14
 
     "colorscheme slate
     "colorscheme slate2
@@ -507,7 +526,6 @@ let g:mapleader = ','
 
     call EnsureExists('~/.vim/.cache')
     call EnsureExists('~/.vim/.cache/unite')
-    call EnsureExists('~/.vim/.cache')
     call EnsureExists(&undodir)
     call EnsureExists(&backupdir)
     call EnsureExists(&directory)

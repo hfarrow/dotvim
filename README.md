@@ -8,10 +8,11 @@ Installation
 1.  The recommended method is to add this repo as a git submodule.
 
     ```
-    mkdir ~/.dotvim/
-    cd ~/.dotvim
-    git init
-    git submodule add git@github.com:hfarrow/dotvim.git
+    cd ~
+    git clone git@github.com:hfarrow/dotvim.git .dotvim
+    cd .dotvim
+    git submodule init
+    git submodule update
     ```
 
 2.  Use symbolic links for ~/.vim and ~/.vimrc. Remove or backup those files first if they exist already.
