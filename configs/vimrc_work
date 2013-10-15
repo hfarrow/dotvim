@@ -26,6 +26,8 @@ call pathogen#infect('custom_bundle/{}')
 call pathogen#helptags()
 filetype on
 
+set guifont=Inconsolata\ for\ Powerline:h14
+
 " Conversions
 map <Leader>cu :e ++ff=mac<CR> :set ff=unix<CR> :w<CR>
 map <Leader>cm :e ++ff=unix<CR> :set ff=mac<CR> :w<CR>
