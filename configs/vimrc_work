@@ -26,6 +26,8 @@ call pathogen#infect('custom_bundle/{}')
 call pathogen#helptags()
 filetype on
 
+set guifont=Inconsolata\ for\ Powerline:h14
+
 " Conversions
 map <Leader>cu :e ++ff=mac<CR> :set ff=unix<CR> :w<CR>
 map <Leader>cm :e ++ff=unix<CR> :set ff=mac<CR> :w<CR>
@@ -63,8 +65,13 @@ noremap <silent> <Leader>tr :call OpenMruFile()<CR>
 
 noremap <silent> <Leader>tw :FufFileWithFullCwd **/<C-r><C-w><CR>
 
+call EnsureExists('~/.vim/.cache/fuf-data')
+let g:fuf_dataDir = '~/.vim/.cache/fuf-data'
+
+" Ack
 nnoremap <space>w :Ack!<C-r><C-w><cr>
 nnoremap <space>/ :Ack!
 
-call EnsureExists('~/.vim/.cache/fuf-data')
-let g:fuf_dataDir = '~/.vim/.cache/fuf-data'
+" Actionscript
+autocmd FileType actionscript setlocal noexpandtab
+autocmd FileType java setlocal noexpandtab
