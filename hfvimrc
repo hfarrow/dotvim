@@ -22,6 +22,16 @@ let g:mapleader = ','
     map <Leader>td :e ~/.vim/hfvimrc<cr>
 " }}}
 
+" Required Paths {{{
+    function! EnsureExists(path) "{{{
+        if !isdirectory(expand(a:path))
+            call mkdir(expand(a:path))
+        endif
+    endfunction " }}}
+
+    call EnsureExists('~/.vim/.cache')
+" }}}
+
 " hfvim settings {{{
     if !exists('g:hfvim_settings') || !exists('g:hfvim_settings.expected_major_version')
         echom 'The g:hfvim_settings and g:hfvim_settings.expected_major_version variables must be defined.'
@@ -183,6 +193,8 @@ let g:mapleader = ','
         " }}}
         NeoBundle 'kien/ctrlp.vim' " {{{
             nnoremap <A-p> :CtrlPMRU<cr>
+            call EnsureExists('~/.vim/.cache/ctrlp')
+            let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp'
         " }}}
         NeoBundle 'vim-scripts/taglist.vim' "{{{
 			let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
@@ -206,6 +218,7 @@ let g:mapleader = ','
                 call unite#custom#source('line,outline', 'matchers', 'matcher_fuzzy')
             endif
 
+            call EnsureExists('~/.vim/.cache/unite')
             let g:unite_data_directory='~/.vim/.cache/unite'
             "let g:unite_enable_start_insert=1
             let g:unite_source_history_yank_enable=1
@@ -266,6 +279,7 @@ let g:mapleader = ','
             nnoremap <Leader>w :Ack!<C-r><C-w><cr>
             nnoremap <Leader>/ :Ack!
         " }}}
+        NeoBundle 'Shougo/vimshell.vim'
     endif " }}}
 
     " finish loading {{{
@@ -298,12 +312,6 @@ let g:mapleader = ','
 " }}}
 
 " Functions {{{
-    function! EnsureExists(path) "{{{
-        if !isdirectory(expand(a:path))
-            call mkdir(expand(a:path))
-        endif
-    endfunction " }}}
-
     function! CloseWindowOrKillBuffer() " {{{
         let number_of_windows_to_this_buffer = len(filter(range(1, winnr('$')), "winbufnr(v:val) == bufnr('%')"))
 
@@ -398,7 +406,7 @@ let g:mapleader = ','
     " turn syntax highlighting on
     set t_Co=256
     syntax on
-    set guifont=Inconsolata\ for\ Powerline\ 11
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Bold\ 9
 
     "colorscheme slate
     "colorscheme slate2
@@ -528,8 +536,6 @@ let g:mapleader = ','
     set directory=~/.vim/.cache/swap
     set noswapfile
 
-    call EnsureExists('~/.vim/.cache')
-    call EnsureExists('~/.vim/.cache/unite')
     call EnsureExists(&undodir)
     call EnsureExists(&backupdir)
     call EnsureExists(&directory)
