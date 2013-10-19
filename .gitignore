@@ -1,3 +1,4 @@
 .cache/
 autoload/
 custom_bundle/
+!dependencies/tags/

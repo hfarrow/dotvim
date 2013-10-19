@@ -518,7 +518,7 @@ let g:mapleader = ','
 
 " Tags {{{
     set showfulltag                         "show entire tag when completing from tags
-    set tags+=~/.vim/tags/cpp
+    set tags+=~/.vim/dependencies/tags/cpp
 " }}}
 
 " vim file/folder management {{{
