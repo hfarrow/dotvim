@@ -137,6 +137,7 @@ let g:mapleader = ','
         NeoBundle 'vim-scripts/localvimrc' " {{{
            let g:localvimrc_sandbox = 0
            let g:localvimrc_persistent = 1
+           let g:localvimrc_name = ".lvimrc"
         " }}}
     endif " }}}
 
@@ -306,9 +307,9 @@ let g:mapleader = ','
     autocmd FileType css,scss nnoremap <silent> <leader>S vi{:sort<cr>
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType markdown setlocal nolist
-    autocmd FileType vim setlocal fdm=marker fdls=0 keywordprg=:help
-    autocmd FileType cpp setlocal fdls=99
-    autocmd FileType c setlocal fdls=99
+    autocmd FileType vim setlocal fdm=marker keywordprg=:help
+
+    autocmd BufRead * normal zR 
 " }}}
 
 " Functions {{{
@@ -481,10 +482,14 @@ let g:mapleader = ','
 
 " Pyclewn {{{
 
-    function! StartPyclewn()
+    function! StartPyclewn(executablePath, launchTerminal)
         exec 'Pyclewn'
-        exec 'Cinferiortty'
-        exec 'Cfile build/Debug/Template'
+        if a:launchTerminal
+            exec 'Cinferiortty'
+        endif
+        if strlen(a:executablePath)
+            exec 'Cfile ' . a:executablePath
+        endif
     endfunction
 
     function! QuitPyclewn()
@@ -498,7 +503,7 @@ let g:mapleader = ','
     nnoremap <F10> :Cnext<CR>
     nnoremap <F11> :Cstep<CR>
     nnoremap <S-F11> :Cfinish<CR>
-    nnoremap <F12> :call StartPyclewn()<CR>
+    nnoremap <F12> :call StartPyclewn("", 0)<CR>
     nnoremap <S-F12> :call QuitPyclewn()<CR>
 
     nnoremap <Leader>za :Cinfo args<CR>
