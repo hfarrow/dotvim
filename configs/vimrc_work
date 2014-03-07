@@ -75,3 +75,6 @@ nnoremap <space>/ :Ack!
 " Actionscript
 autocmd FileType actionscript setlocal noexpandtab
 autocmd FileType java setlocal noexpandtab
+
+" Generate ctags
+map <C-F12> :!ctags -R .<CR>

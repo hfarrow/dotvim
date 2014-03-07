@@ -169,7 +169,8 @@ let g:mapleader = ','
 
     if count(s:settings.plugin_groups, 'editing') "{{{
         NeoBundle 'Raimondi/delimitMate' " {{{
-           "let delimitMate_autoclose = 0 
+           "let delimitMate_autoclose = 0
+           "let delimitMate_expand_cr = 1
         " }}}
         NeoBundle 'vim-scripts/tComment' " {{{
             map <Leader>c <c-_><c-_>
@@ -457,7 +458,7 @@ let g:mapleader = ','
     set number                              "line numbers
     set showmatch                           "highlight matching braces
     set comments=sl:/*,mb:\ *,elx:\ */      "intelligent comments
-    set textwidth=120                       "wrap lines at 120 chars. 
+    "set textwidth=160                       "wrap lines at 120 chars. 
     set mouse=a                             "enable mouse
     set history=1000                        "number of command lines to remember
     set ttyfast                             "assume fast terminal connection
