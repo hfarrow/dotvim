@@ -53,6 +53,7 @@ let g:mapleader = ','
     call add(s:settings.plugin_groups, 'core')
     call add(s:settings.plugin_groups, 'cpp')
     call add(s:settings.plugin_groups, 'actionscript')
+    call add(s:settings.plugin_groups, 'haxe')
     call add(s:settings.plugin_groups, 'scm')
     call add(s:settings.plugin_groups, 'editing')
     call add(s:settings.plugin_groups, 'visual')
@@ -64,7 +65,7 @@ let g:mapleader = ','
 
     " exclude all language-specific plugins by default
     if !exists('g:hfvim_settings.plugin_groups_excluded')
-        let g:hfvim_settings.plugin_groups_excluded = ['cpp', 'actionscript']
+        let g:hfvim_settings.plugin_groups_excluded = ['cpp', 'actionscript', 'haxe']
     endif
 
     for group in g:hfvim_settings.plugin_groups_excluded
@@ -147,7 +148,13 @@ let g:mapleader = ','
     endif " }}}
 
     if count(s:settings.plugin_groups, 'actionscript') "{{{
-        NeoBundle 'jeroenbourgois/vim-actionscript' " {{{
+        NeoBundleLazy 'jeroenbourgois/vim-actionscript', {'autoload' : {'filetypes' : ['actionscript']}} " {{{
+        " }}}
+    endif " }}}
+
+    if count(s:settings.plugin_groups, 'haxe') "{{{
+        NeoBundleLazy 'jdonaldson/vaxe', {'autoload' : {'filetypes' : ['haxe']}} " {{{
+            set autowrite
         " }}}
     endif " }}}
 
