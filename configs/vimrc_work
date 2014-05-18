@@ -5,7 +5,7 @@
     let g:hfvim_settings = {}
     let g:hfvim_settings.expected_major_version = 0
     "let g:hfvim_settings.plugin_groups_excluded = []
-    let g:hfvim_settings.plugin_groups_included = ['actionscript']
+    let g:hfvim_settings.plugin_groups_included = ['actionscript', 'haxe']
     let g:hfvim_settings.disabled_plugins = []
 
     " not supported yet
@@ -75,3 +75,6 @@ nnoremap <space>/ :Ack!
 " Actionscript
 autocmd FileType actionscript setlocal noexpandtab
 autocmd FileType java setlocal noexpandtab
+
+" Generate ctags
+map <C-F12> :!ctags -R .<CR>

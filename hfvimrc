@@ -53,6 +53,7 @@ let g:mapleader = ','
     call add(s:settings.plugin_groups, 'core')
     call add(s:settings.plugin_groups, 'cpp')
     call add(s:settings.plugin_groups, 'actionscript')
+    call add(s:settings.plugin_groups, 'haxe')
     call add(s:settings.plugin_groups, 'scm')
     call add(s:settings.plugin_groups, 'editing')
     call add(s:settings.plugin_groups, 'visual')
@@ -64,7 +65,7 @@ let g:mapleader = ','
 
     " exclude all language-specific plugins by default
     if !exists('g:hfvim_settings.plugin_groups_excluded')
-        let g:hfvim_settings.plugin_groups_excluded = ['cpp', 'actionscript']
+        let g:hfvim_settings.plugin_groups_excluded = ['cpp', 'actionscript', 'haxe']
     endif
 
     for group in g:hfvim_settings.plugin_groups_excluded
@@ -148,7 +149,13 @@ let g:mapleader = ','
     endif " }}}
 
     if count(s:settings.plugin_groups, 'actionscript') "{{{
-        NeoBundle 'jeroenbourgois/vim-actionscript' " {{{
+        NeoBundleLazy 'jeroenbourgois/vim-actionscript', {'autoload' : {'filetypes' : ['actionscript']}} " {{{
+        " }}}
+    endif " }}}
+
+    if count(s:settings.plugin_groups, 'haxe') "{{{
+        NeoBundleLazy 'jdonaldson/vaxe', {'autoload' : {'filetypes' : ['haxe']}} " {{{
+            set autowrite
         " }}}
     endif " }}}
 
@@ -171,7 +178,8 @@ let g:mapleader = ','
 
     if count(s:settings.plugin_groups, 'editing') "{{{
         NeoBundle 'Raimondi/delimitMate' " {{{
-           "let delimitMate_autoclose = 0 
+           "let delimitMate_autoclose = 0
+           "let delimitMate_expand_cr = 1
         " }}}
         NeoBundle 'vim-scripts/tComment' " {{{
             map <Leader>c <c-_><c-_>
@@ -200,6 +208,11 @@ let g:mapleader = ','
         " }}}
         NeoBundle 'vim-scripts/taglist.vim' "{{{
 			let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
+            let tlist_lua_settings = 'lua;c:constant;C:command;t:trigger;f:function'
+            let tlist_cpp_settings = 'c++;n:namespace;v:variable;d:macro;t:typedef;' .
+                                   \ 'c:class;g:enum;s:struct;u:union;f:function;p:prototype'
+            let tlist_c_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;' .
+                                       \ 'v:variable;f:function;p:prototype'
 			let Tlist_Use_Right_Window = 1
 			let Tlist_Show_One_File = 1
 			let Tlist_Display_Tag_Scope = 1
@@ -470,7 +483,7 @@ let g:mapleader = ','
     set number                              "line numbers
     set showmatch                           "highlight matching braces
     set comments=sl:/*,mb:\ *,elx:\ */      "intelligent comments
-    set textwidth=120                       "wrap lines at 120 chars. 
+    "set textwidth=160                       "wrap lines at 120 chars. 
     set mouse=a                             "enable mouse
     set history=1000                        "number of command lines to remember
     set ttyfast                             "assume fast terminal connection
