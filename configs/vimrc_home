@@ -21,4 +21,6 @@
 " User config below here
 " ==========================================================
 
+set go-=T
+
 let g:ycm_extra_conf_globlist = ['~/dev/*','!~/*']

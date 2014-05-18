@@ -143,6 +143,7 @@ let g:mapleader = ','
 
     if count(s:settings.plugin_groups, 'cpp') "{{{
         NeoBundleLazy 'vim-scripts/a.vim', {'autoload' : {'filetypes' : ['cpp']}} " {{{
+        NeoBundleLazy 'octol/vim-cpp-enhanced-highlight', {'autoload' : {'filetypes' : ['cpp']}}
         " }}}
     endif " }}}
 
@@ -417,7 +418,8 @@ let g:mapleader = ','
     " turn syntax highlighting on
     set t_Co=256
     syntax on
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Bold\ 9
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Bold\ 8
+    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Bold\ 9.5
 
     "colorscheme slate
     "colorscheme slate2
@@ -511,7 +513,7 @@ let g:mapleader = ','
     endfunction
 
     " Something keeps turning ballooneval off so set it everytime we do anything
-    let g:pyclewn_args="--terminal=konsole,-e"
+    let g:pyclewn_args="--terminal=gnome-terminal,-x"
     nnoremap <F8> :Crun<CR>:set ballooneval<CR>
     nnoremap <S-F8> :Ckill<CR>:set ballooneval<CR>
     nnoremap <F9> :Ccontinue<CR>:set ballooneval<CR>
