@@ -1,7 +1,7 @@
 dotvim
 ======
 
-This repository contains a vim distrobution created by and for Heath Farrow.
+This repository contains a vim distribution created by and for Heath Farrow.
 
 Installation
 ---------------------------
