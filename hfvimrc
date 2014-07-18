@@ -1,6 +1,13 @@
 set nocompatible
 let s:settings = {}
 
+" TODO:
+" Replace snipmate with utilsnip
+" Replace nerdtree with unite-filer
+" Retire fuzzyfinder in favour of unite (if searching and grepping issues are not a problem
+" remove ctrlp?
+" improve start up time. Lazy loading, command line args to remove plugin groups
+
 "remap leader key
 let mapleader = ','
 let g:mapleader = ','
@@ -54,6 +61,7 @@ let g:mapleader = ','
     call add(s:settings.plugin_groups, 'cpp')
     call add(s:settings.plugin_groups, 'actionscript')
     call add(s:settings.plugin_groups, 'haxe')
+    call add(s:settings.plugin_groups, 'javascript')
     call add(s:settings.plugin_groups, 'scm')
     call add(s:settings.plugin_groups, 'editing')
     call add(s:settings.plugin_groups, 'visual')
@@ -159,6 +167,11 @@ let g:mapleader = ','
         " }}}
     endif " }}}
 
+    if count(s:settings.plugin_groups, 'javascript') "{{{
+        NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload' : {'filetypes' : ['javascript']}} " {{{
+        " }}}
+    endif " }}}
+
     if count(s:settings.plugin_groups, 'scm') "{{{
         NeoBundle 'tpope/vim-fugitive', {'augroup' : 'fugitive'} " {{{
             map <Leader>gd :Gdiff<cr>
@@ -168,7 +181,6 @@ let g:mapleader = ','
             map <Leader>gb :Gblame<cr>
             map <Leader>gl :Glog<cr>
             map <Leader>gg :Git checkout<cr>
-            map <Leader>gt :Git stash apply stash^{/console}<cr>
             map <Leader>gvr :Git svn rebase<cr>
             map <Leader>gvc :Git svn dcommit<cr>
             map <Leader>gk :Git checkout .
@@ -237,38 +249,47 @@ let g:mapleader = ','
             let g:unite_data_directory='~/.vim/.cache/unite'
             "let g:unite_enable_start_insert=1
             let g:unite_source_history_yank_enable=1
-            let g:unite_source_rec_max_cache_files=10000
-            let g:unite_source_find_max_candidates=10000
+            let g:unite_source_rec_max_cache_files=50000
+            let g:unite_source_find_max_candidates=20000
+            let g:unite_source_grep_max_candidates=20000
             let g:unite_prompt='» '
 
-            let g:unite_source_grep_max_candidates=500
             if executable('ag')
                 let g:unite_source_grep_command='ag'
                 let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C0'
                 let g:unite_source_grep_recursive_opt=''
             elseif executable('ack')
                 let g:unite_source_grep_command='ack'
-                let g:unite_source_grep_default_opts='--no-heading --no-color -a -C0'
+                let g:unite_source_grep_default_opts='--no-heading --no-color -k -C0'
                 let g:unite_source_grep_recursive_opt=''
             endif
 
             nmap <space> [unite]
             nnoremap [unite] <nop>
 
-            nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -start-insert -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
-            nnoremap <silent> [unite]f :<C-u>Unite -toggle -start-insert -buffer-name=files file_rec/async<cr><c-u>
-            nnoremap <silent> [unite]e :<C-u>Unite -toggle -start-insert -buffer-name=mru file_mru<cr><c-u>
-            nnoremap <silent> [unite]r :<C-u>Unite -toggle -start-insert -buffer-name=mru file_mru<cr><c-u>
-            nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-            nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
-            nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -start-insert -buffer-name=buffers buffer<cr>
-            nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
-            nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-            nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+            nnoremap <silent> [unite]u :<C-u>Unite -toggle -start-insert<cr><c-u>
+            nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
+            nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+            nnoremap <silent> [unite]e :<C-u>Unite -toggle -auto-resize -buffer-name=mru file_mru<cr><c-u>
+            nnoremap <silent> [unite]r :<C-u>Unite -toggle -auto-resize -buffer-name=mru file_mru<cr><c-u>
+            nnoremap <silent> [unite]y :<C-u>Unite -toggle -auto-resize -buffer-name=yanks history/yank<cr>
+            nnoremap <silent> [unite]l :<C-u>Unite -toggle -auto-resize -buffer-name=line line<cr>
+            nnoremap <silent> [unite]b :<C-u>Unite -toggle -auto-resize -buffer-name=buffers buffer<cr>
+            nnoremap <silent> [unite]/ :<C-u>Unite -toggle -auto-resize -no-quit -buffer-name=search grep:.<cr>
+            nnoremap <silent> [unite]z :<C-u>Unite -toggle -auto-resize -buffer-name=mappings mapping<cr>
+            nnoremap <silent> [unite]o :<C-u>Unite -toggle -auto-resize -buffer-name=outline outline<cr>
+            nnoremap <silent> [unite]s :<C-u>Unite -toggle -auto-resize -quick-match buffer<cr>
+            nnoremap <silent> [unite]m :<C-u>Unite -toggle -auto-resize -buffer-name=bookmarks bookmark<cr>
+            nnoremap <silent> [unite]M :<C-u>UniteBookmarkAdd<cr><cr>
             " Search for word under cursor
             nmap <silent> [unite]w [unite]/<C-r><C-w><cr>
 
             map <C-F11> <Plug>(unite_redraw)
+        " }}}
+        " {{{ Unite Plugins
+            NeoBundle 'Shougo/neomru.vim'
+            NeoBundle 'Shougo/unite-outline'
+            NeoBundle 'Shougo/unite-session'
         " }}}
     endif " }}}
 

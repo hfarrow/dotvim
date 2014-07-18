@@ -37,40 +37,40 @@ map <Leader>cd :e ++ff=dos<CR> :set ff=unix<CR> :w<CR>
 map <Leader>jf :%!python -m json.tool<CR>
 
 " FuzzyFinder keybindings
-let g:fuf_modesDisable = []
-
-function! OpenFile() 
-    if stridx(bufname("%"),"NERD_tree") >= 0 
-       :wincmd w 
-    endif 
-    :FufFileWithFullCwd **/
-endfunction 
-noremap <silent> <Leader>tt :call OpenFile()<CR>
-
-function! OpenBuffer() 
-    if stridx(bufname("%"),"NERD_tree") >= 0 
-       :wincmd w 
-    endif 
-    :FufBuffer
-endfunction 
-noremap <silent> <Leader>tb :call OpenBuffer()<CR>
-
-function! OpenMruFile()
-	if stridx(bufname("%"), "NERD_tree") >= 0
-		:wincmd w
-	endif
-	:FufMruFileInCwd **/
-endfunction
-noremap <silent> <Leader>tr :call OpenMruFile()<CR>
-
-noremap <silent> <Leader>tw :FufFileWithFullCwd **/<C-r><C-w><CR>
-
-call EnsureExists('~/.vim/.cache/fuf-data')
-let g:fuf_dataDir = '~/.vim/.cache/fuf-data'
-
-" Ack
-nnoremap <space>w :Ack!<C-r><C-w><cr>
-nnoremap <space>/ :Ack!
+" let g:fuf_modesDisable = []
+"
+" function! OpenFile() 
+"     if stridx(bufname("%"),"NERD_tree") >= 0 
+"        :wincmd w 
+"     endif 
+"     :FufFileWithFullCwd **/
+" endfunction 
+" noremap <silent> <Leader>tt :call OpenFile()<CR>
+"
+" function! OpenBuffer() 
+"     if stridx(bufname("%"),"NERD_tree") >= 0 
+"        :wincmd w 
+"     endif 
+"     :FufBuffer
+" endfunction 
+" noremap <silent> <Leader>tb :call OpenBuffer()<CR>
+"
+" function! OpenMruFile()
+" 	if stridx(bufname("%"), "NERD_tree") >= 0
+" 		:wincmd w
+" 	endif
+" 	:FufMruFileInCwd **/
+" endfunction
+" noremap <silent> <Leader>tr :call OpenMruFile()<CR>
+"
+" noremap <silent> <Leader>tw :FufFileWithFullCwd **/<C-r><C-w><CR>
+"
+" call EnsureExists('~/.vim/.cache/fuf-data')
+" let g:fuf_dataDir = '~/.vim/.cache/fuf-data'
+"
+" " Ack
+" nnoremap <space>w :Ack!<C-r><C-w><cr>
+" nnoremap <space>/ :Ack!
 
 " Actionscript
 autocmd FileType actionscript setlocal noexpandtab
