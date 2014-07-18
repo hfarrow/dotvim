@@ -3,7 +3,7 @@ let s:settings = {}
 
 " TODO:
 " Replace snipmate with utilsnip
-" Replace nerdtree with unite-filer
+" Replace nerdtree with vimfiler
 " Retire fuzzyfinder in favour of unite (if searching and grepping issues are not a problem
 " remove ctrlp?
 " improve start up time. Lazy loading, command line args to remove plugin groups
@@ -290,6 +290,13 @@ let g:mapleader = ','
             NeoBundle 'Shougo/neomru.vim'
             NeoBundle 'Shougo/unite-outline'
             NeoBundle 'Shougo/unite-session'
+            NeoBundle 'Shougo/vimfiler.vim'
+            nnoremap <silent> [unite]t :<C-u>VimFilerExplorer<CR>
+            nnoremap <silent> [unite]T :<C-u>VimFiler<CR>
+            let g:vimfiler_as_default_explorer = 1
+            NeoBundle 'Shougo/unite-help'
+            nnoremap <silent> [unite]h :<C-u>Unite -start-insert help<CR>
+            nnoremap <silent> [unite]H :<C-u><C-u>UniteWithCursorWord help<CR>
         " }}}
     endif " }}}
 
