@@ -459,7 +459,7 @@ let g:mapleader = ','
     " turn syntax highlighting on
     set t_Co=256
     syntax on
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Bold\ 8
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Bold\ 9
     "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Bold\ 9.5
 
     "colorscheme slate

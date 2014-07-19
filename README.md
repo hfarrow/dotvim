@@ -9,10 +9,7 @@ Installation
 
     ```
     cd ~
-    git clone git@github.com:hfarrow/dotvim.git .dotvim
-    cd .dotvim
-    git submodule init
-    git submodule update
+    git clone --recursive git@github.com:hfarrow/dotconfig.git .dotconfig
     ```
 
 2.  Use symbolic links for ~/.vim and ~/.vimrc. Remove or backup those files first if they exist already.
@@ -21,14 +18,31 @@ Installation
     cd ~
     mv .vim .vim.old
     mv .vimrc .vimrc.old
-    ln -s .dotvim/ .vim
-    ln -s .dotvim/vimrc .vimrc
+    ln -s .dotconfig/dotvim/ .vim
+    ln -s .dotconfig/dotvim/configs/vimrc_template .vimrc
     ```
+3. Install powerline fonts found in ~/.vim/dependencies/. DroidSansMono is the defualt used by hfvimrc.
 
 3.  Run vim or gvim and you should be prompted to install the default plugins. You may have to press enter a few times
-    during this process. You may see an error when initially starting vim but it is usually safe to ignore. The errors will not be seen when you run vim in the future
+    during this process. You may see an error when initially starting vim but it is usually safe to ignore.
+    The errors will not be seen when you run vim in the future
 
 4.  After the plugins have installed restart vim or gvim. (Not required for some functionality)
+
+5.  If you get errors about missing dependecies when installing then run the installation for those plugins manually
+    to see what errors may have been encountered. For example, you must have a valid default compiler set in order
+    to build YouCompleteMe.
+    
+    For linux:
+    ```
+    sudo apt-get install exuberent-ctags
+
+    cd ~/.vim/bundle/vimproc
+    make -f make_unix.mak
+    
+    cd ~/.vim/bundle/YouCompleteMe
+    
+    ```
 
 Configuration
 ---------------------------
