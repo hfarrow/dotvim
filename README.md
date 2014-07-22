@@ -5,10 +5,15 @@ This repository contains a vim distribution created by and for Heath Farrow.
 
 Installation
 ---------------------------
-1. Install gvim or mvim (optional). Your vim build needs to support (lua, python, ruby, perl)
+1. Install gvim or mvim (optional). Your vim build needs to support (lua, python, ruby, perl). Below are some examples of how vim should probably be configured
     
+    Manual:
     ```
      ./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --with-lua-prefix=/usr/local -with-luajit --enable-cscope
+    ```
+    Homebrew (OSX)
+    ```
+    brew install macvim --with-lua --with-luajit
     ```
 2.  The recommended method is to add this repo as a git submodule.
 
