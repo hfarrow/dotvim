@@ -51,6 +51,8 @@ Installation
     make -f make_unix.mak
     
     cd ~/.vim/bundle/YouCompleteMe
+    git submodule update --init --recursive
+    ./install.sh --clang-completer
     
     cd ~/.vim/bundle/powerline
     ./setup.py build
