@@ -52,6 +52,11 @@ Installation
     
     cd ~/.vim/bundle/YouCompleteMe
     
+    cd ~/.vim/bundle/powerline
+    ./setup.py build
+    sudo ./setup.py install
+    
+    TODO: instructions for jshint
     ```
 
 Configuration
