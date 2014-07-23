@@ -5,14 +5,24 @@ This repository contains a vim distribution created by and for Heath Farrow.
 
 Installation
 ---------------------------
-1.  The recommended method is to add this repo as a git submodule.
+1. Install gvim or mvim (optional). Your vim build needs to support (lua, python, ruby, perl). Below are some examples of how vim should probably be configured
+    
+    Manual:
+    ```
+     ./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --with-lua-prefix=/usr/local -with-luajit --enable-cscope
+    ```
+    Homebrew (OSX)
+    ```
+    brew install macvim --with-lua --with-luajit
+    ```
+2.  The recommended method is to add this repo as a git submodule.
 
     ```
     cd ~
     git clone --recursive git@github.com:hfarrow/dotconfig.git .dotconfig
     ```
 
-2.  Use symbolic links for ~/.vim and ~/.vimrc. Remove or backup those files first if they exist already.
+3.  Use symbolic links for ~/.vim and ~/.vimrc. Remove or backup those files first if they exist already.
 
     ```
     cd ~
@@ -21,15 +31,15 @@ Installation
     ln -s .dotconfig/dotvim/ .vim
     ln -s .dotconfig/dotvim/configs/vimrc_template .vimrc
     ```
-3. Install powerline fonts found in ~/.vim/dependencies/. DroidSansMono is the defualt used by hfvimrc.
+4. Install powerline fonts found in ~/.vim/dependencies/. DroidSansMono is the defualt used by hfvimrc.
 
-3.  Run vim or gvim and you should be prompted to install the default plugins. You may have to press enter a few times
+5.  Run vim or gvim and you should be prompted to install the default plugins. You may have to press enter a few times
     during this process. You may see an error when initially starting vim but it is usually safe to ignore.
     The errors will not be seen when you run vim in the future
 
-4.  After the plugins have installed restart vim or gvim. (Not required for some functionality)
+6.  After the plugins have installed restart vim or gvim. (Not required for some functionality)
 
-5.  If you get errors about missing dependecies when installing then run the installation for those plugins manually
+7.  If you get errors about missing dependecies when installing then run the installation for those plugins manually
     to see what errors may have been encountered. For example, you must have a valid default compiler set in order
     to build YouCompleteMe.
     
@@ -41,7 +51,14 @@ Installation
     make -f make_unix.mak
     
     cd ~/.vim/bundle/YouCompleteMe
+    git submodule update --init --recursive
+    ./install.sh --clang-completer
     
+    cd ~/.vim/bundle/powerline
+    ./setup.py build
+    sudo ./setup.py install
+    
+    TODO: instructions for jshint
     ```
 
 Configuration
