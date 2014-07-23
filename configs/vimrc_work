@@ -21,10 +21,10 @@
 " User config below here
 " ==========================================================
 
-filetype off
-call pathogen#infect('custom_bundle/{}')
-call pathogen#helptags()
-filetype on
+"filetype off
+"call pathogen#infect('custom_bundle/{}')
+"call pathogen#helptags()
+"filetype on
 
 set guifont=Inconsolata\ for\ Powerline:h14
 
