@@ -41,7 +41,7 @@ let g:mapleader = ','
         finish
     endif
 
-    if g:hfvim_settings.expected_major_version != 0
+    if g:hfvim_settings.expected_major_version != g:hfvim_version_major
         echom 'The version number in your config does not match the distribution version.'
         finish
     endif
