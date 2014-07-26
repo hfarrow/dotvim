@@ -1,0 +1,55 @@
+set nocompatible
+
+" TEMP.. to make gvim -u work
+if filereadable("/usr/share/vim/vimrc")
+  source /usr/share/vim/vimrc
+endif
+
+let g:hfvim = {}
+let g:hfvim.settings = {}
+let s:settings = g:hfvim.settings
+
+let s:settings.dotvim_path = '~/.vim'
+
+"remap leader key
+let mapleader = ','
+let g:mapleader = ','
+
+let s:settings.debug = 1
+
+let g:hfvim.version_major = 1
+let g:hfvim.version_minor = 0
+
+
+if !exists('g:hfvim_settings') || !exists('g:hfvim_settings.expected_major_version')
+    echom 'The g:hfvim_settings and g:hfvim_settings.expected_major_version variables must be defined.'
+    finish
+endif
+
+if g:hfvim_settings.expected_major_version != g:hfvim.version_major
+    echom 'The version number in your config does not match the distribution version.'
+    finish
+endif
+
+
+" Default settings
+let s:settings.test_setting = 0
+
+" override defaults with the ones specified in g:hfvim_settings
+for key in keys(s:settings)
+    if has_key(g:hfvim_settings, key)
+        let s:settings[key] = g:hfvim_settings[key]
+        if s:settings.debug == 1
+            echom '[debug] User Override -> ' key ' = ' g:hfvim_settings[key]
+        endif
+    endif
+endfor
+
+
+exec ':source ' . s:settings.dotvim_path . '/hfvim/utils.vim'
+call EnsureExists(s:settings.dotvim_path . '/.cache')
+
+call Source('hfvim/bundle_groups.vim')
+call Source('hfvim/bundles.vim')
+call Source('hfvim/settings.vim')
+call Source('hfvim/mappings.vim')
