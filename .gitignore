@@ -1,4 +1,4 @@
 .cache/
+.neobundle/
 autoload/
-custom_bundle/
 !dependencies/tags/

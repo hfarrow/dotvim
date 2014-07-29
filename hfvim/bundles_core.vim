@@ -1,7 +1,8 @@
 let s:settings = g:hfvim.settings
 
 if count(s:settings.bundle_groups, 'core')
-    NeoBundle 'Shougo/neobundle-vim-recipes'
+    " NeoBundle 'Shougo/neobundle-vim-recipes'
+    "     exec 'set runtimepath+=' . s:settings.dotvim_path . '/recipes'
     NeoBundle 'Shougo/vimproc.vim', {
     \   'build' : {
     \       'windows' : 'make -f make_mingw32.mak',
@@ -21,5 +22,5 @@ if count(s:settings.bundle_groups, 'core')
     NeoBundle 'bling/vim-airline'
         let g:airline_powerline_fonts=1
         set laststatus=2
-    NeoBundle 'Lokaltog/powerline'
+    NeoBundleLazy 'Lokaltog/powerline'
 endif
