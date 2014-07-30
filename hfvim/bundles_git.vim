@@ -1,6 +1,7 @@
 let s:settings = g:hfvim.settings
 
 if count(s:settings.bundle_groups, 'git')
+    NeoBundle 'airblade/vim-gitgutter'
     NeoBundleLazy 'tpope/vim-fugitive', {
         \ 'augroup': 'fugitive',
         \ 'autoload': {

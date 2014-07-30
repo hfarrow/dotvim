@@ -1,10 +1,5 @@
 set nocompatible
 
-" TEMP.. to make gvim -u work
-if filereadable("/usr/share/vim/vimrc")
-  " source /usr/share/vim/vimrc
-endif
-
 let g:hfvim = {}
 let g:hfvim.settings = {}
 let s:settings = g:hfvim.settings
@@ -19,7 +14,6 @@ let s:settings.debug = 0
 
 let g:hfvim.version_major = 1
 let g:hfvim.version_minor = 0
-
 
 if !exists('g:hfvim_settings') || !exists('g:hfvim_settings.expected_major_version')
     echom 'The g:hfvim_settings and g:hfvim_settings.expected_major_version variables must be defined.'

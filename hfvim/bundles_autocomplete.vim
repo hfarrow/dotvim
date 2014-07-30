@@ -1,8 +1,14 @@
 let s:settings = g:hfvim.settings
 
 if count(s:settings.bundle_groups, 'autocomplete')
+    NeoBundle 'SirVer/ultisnips'
+        " Snippets are separated from the engine. Add this if you want them:
+        NeoBundle 'honza/vim-snippets'
+        let g:UltiSnipsExpandTrigger="<c-a>"
+        let g:UltiSnipsJumpForwardTrigger="<c-b>"
+        let g:UltiSnipsJumpBackwardTrigger="<c-z>"
     NeoBundle 'scrooloose/syntastic'
-    NeoBundle 'Valloric/YouCompleteMe', " {{{
+    NeoBundle 'Valloric/YouCompleteMe',
         \ {'build' :
         \   {
         \       'unix' : './install.sh --clang-completer',

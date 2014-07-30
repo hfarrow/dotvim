@@ -12,7 +12,7 @@ let g:hfvim_settings.dotvim_path = '~/.vim'
 " ==========================================================
 " Source hfvim to initialize the distribution
 " ==========================================================
-so ~/.vim.new/hfvim/hfvimrc
+so ~/.vim/hfvim/hfvimrc
 
 if has('gui_running')
     set guifont=Inconsolata\ for\ Powerline:h14
