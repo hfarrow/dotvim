@@ -31,10 +31,6 @@ if g:hfvim_settings.expected_major_version != g:hfvim.version_major
     finish
 endif
 
-
-" Default settings
-let s:settings.test_setting = 0
-
 " override defaults with the ones specified in g:hfvim_settings
 for key in keys(s:settings)
     if has_key(g:hfvim_settings, key)

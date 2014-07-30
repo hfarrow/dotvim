@@ -30,15 +30,17 @@ call neobundle#end()
 filetype plugin indent on
 
 if exists('g:hfvim_settings.disabled_bundles')
+    call Debug('hfvim disabled bundles: ' . join(g:hfvim_settings.disabled_bundles, ','))
     for bundle in g:hfvim_settings.disabled_bundles
         exec 'NeoBundleDisable '.bundle
     endfor
 endif
 
-if has('gui_running')
+if !has('gui_running')
     if exists('s:settings.gui_bundles')
+    call Debug('hfvim disabled terminal bundles: ' . join(s:settings.gui_bundles, ','))
         for bundle in s:settings.gui_bundles
-            exec 'NeoBundleDisable'.bundle
+            exec 'NeoBundleDisable '.bundle
         endfor
     endif
 endif

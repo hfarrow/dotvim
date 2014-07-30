@@ -1,3 +1,6 @@
+let s:settings = g:hfvim.settings
+let s:dotvim_path = s:settings.dotvim_path
+
 " Editor {{{
 " Color Schemes {{{
     " turn syntax highlighting on
@@ -72,3 +75,33 @@
     set softtabstop=4
 " }}}
 
+" Tags {{{
+    set showfulltag                         "show entire tag when completing from tags
+    exec 'set tags+=' . s:dotvim_path . '/dependencies/tags/cpp'
+    exec 'set tags+=' . s:dotvim_path . '/dependencies/tags/sdl2'
+" }}}
+
+" vim file/folder management {{{
+    " persistent viminfo
+    if has('viminfo')
+        set vi^=!
+    endif
+    
+    " persistent undo
+    if exists('+undofile')
+        set undofile
+        exec ':set undodir=' . s:dotvim_path . '/.cache/undo'
+    endif
+
+    " backups
+    set backup
+    exec ':set backupdir=' . s:dotvim_path . '/.cache/backup'
+
+    " swap files
+    exec 'set directory=' . s:dotvim_path . '/.cache/swap'
+    set noswapfile
+
+    call EnsureExists(&undodir)
+    call EnsureExists(&backupdir)
+    call EnsureExists(&directory)
+" }}}
