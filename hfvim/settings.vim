@@ -18,7 +18,7 @@
     "colorscheme refactor
     "colorscheme symfony
     "colorscheme two2tango
-    "colorscheme wombat256
+    colorscheme wombat256
 " }}}
 
 " Encoding {{{
