@@ -15,7 +15,7 @@ let s:settings.dotvim_path = '~/.vim'
 let mapleader = ','
 let g:mapleader = ','
 
-let s:settings.debug = 1
+let s:settings.debug = 0
 
 let g:hfvim.version_major = 1
 let g:hfvim.version_minor = 0
@@ -44,7 +44,6 @@ for key in keys(s:settings)
         endif
     endif
 endfor
-
 
 exec ':source ' . s:settings.dotvim_path . '/hfvim/utils.vim'
 call EnsureExists(s:settings.dotvim_path . '/.cache')

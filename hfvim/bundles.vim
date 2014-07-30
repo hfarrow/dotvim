@@ -29,10 +29,18 @@ call neobundle#end()
 
 filetype plugin indent on
 
-if exists('g:hf_settings.disabled_bundles')
+if exists('g:hfvim_settings.disabled_bundles')
     for bundle in g:hfvim_settings.disabled_bundles
         exec 'NeoBundleDisable '.bundle
     endfor
+endif
+
+if has('gui_running')
+    if exists('s:settings.gui_bundles')
+        for bundle in s:settings.gui_bundles
+            exec 'NeoBundleDisable'.bundle
+        endfor
+    endif
 endif
 
 " Installation Check

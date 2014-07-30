@@ -1,24 +1,26 @@
 " Editor {{{
 " Color Schemes {{{
     " turn syntax highlighting on
-    set t_Co=256
-    syntax on
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Bold\ 9
-    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Bold\ 9.5
+    "if has('gui_running')
+        set t_Co=256
+        syntax on
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Bold\ 9
+        "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Bold\ 9.5
 
-    "colorscheme slate
-    "colorscheme slate2
-    "colorscheme BusyBee
-    "colorscheme darkrobot
-    "colorscheme jellybeans
-    "colorscheme kib_darktango
-    "colorscheme native
-    "colorscheme no_quater
-    "colorscheme paintbox
-    "colorscheme refactor
-    "colorscheme symfony
-    "colorscheme two2tango
-    colorscheme wombat256
+        "colorscheme slate
+        "colorscheme slate2
+        "colorscheme BusyBee
+        "colorscheme darkrobot
+        "colorscheme jellybeans
+        "colorscheme kib_darktango
+        "colorscheme native
+        "colorscheme no_quater
+        "colorscheme paintbox
+        "colorscheme refactor
+        "colorscheme symfony
+        "colorscheme two2tango
+        colorscheme wombat256
+    "endif
 " }}}
 
 " Encoding {{{

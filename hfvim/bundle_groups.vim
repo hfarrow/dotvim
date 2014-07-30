@@ -14,6 +14,8 @@ call add(s:settings.bundle_groups, 'haxe')
 call add(s:settings.bundle_groups, 'javascript')
 call add(s:settings.bundle_groups, 'python')
 
+let s:settings.gui_bundles = []
+
 " exclude all language-specific bundles by default
 if !exists('g:hfvim_settings.bundle_groups_excluded')
     let g:hfvim_settings.bundle_groups_excluded = ['cpp', 'actionscript', 'haxe', 'javascript', 'python']
