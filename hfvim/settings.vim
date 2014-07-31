@@ -65,6 +65,7 @@ let s:settings = g:hfvim.settings
     "set foldlevelstart=99                   "open all folds by default
     set nofoldenable
     "let g:xml_syntax_folding=1              "enable xml folding
+    set updatetime=1000                      "not reccomended to be below 1000 due to glitches in terminal
 " }}}
 
 " Tabs {{{

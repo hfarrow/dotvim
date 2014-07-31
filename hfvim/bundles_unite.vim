@@ -53,7 +53,11 @@ if count(s:settings.bundle_groups, 'unite')
             endif
         endfunction
 
+        let g:unite_source_menu_menus = {}
+
         nmap <space> [unite]
+        nmap <space>a [menu]
+        nnoremap [menu] <nop>
         nnoremap [unite] <nop>
 
         nnoremap <silent> [unite]u :<C-u>Unite -toggle -start-insert<cr><c-u>
