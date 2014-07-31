@@ -2,7 +2,7 @@ let s:settings = g:hfvim.settings
 
 " Neobundle Config {{{
 if has('vim_starting')
-    exec 'set runtimepath+=' . s:settings.dotvim_path . '/bundle/neobundle.vim/'
+    exec 'set runtimepath+=' . MakePath('bundle/neobundle.vim/')
 endif
 
 " Use git protocol.
@@ -11,7 +11,7 @@ endif
 "=============================================================== 
 " Start Bundles
 "=============================================================== 
-call neobundle#begin(expand( s:settings.dotvim_path . '/bundle'))
+call neobundle#begin(expand(MakePath('bundle')))
     " Let NeoBundle manage NeoBundle
     NeoBundleFetch 'Shougo/neobundle.vim'
 

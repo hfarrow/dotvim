@@ -1,5 +1,4 @@
 let s:settings = g:hfvim.settings
-let s:dotvim_path = s:settings.dotvim_path
 
 " Editor {{{
 " Color Schemes {{{
@@ -22,7 +21,11 @@ let s:dotvim_path = s:settings.dotvim_path
         "colorscheme refactor
         "colorscheme symfony
         "colorscheme two2tango
+
         colorscheme wombat256
+        " make wombat256 play nice with gitgutter
+        hi clear SignColumn
+
     "endif
 " }}}
 
@@ -77,8 +80,8 @@ let s:dotvim_path = s:settings.dotvim_path
 
 " Tags {{{
     set showfulltag                         "show entire tag when completing from tags
-    exec 'set tags+=' . s:dotvim_path . '/dependencies/tags/cpp'
-    exec 'set tags+=' . s:dotvim_path . '/dependencies/tags/sdl2'
+    exec 'set tags+=' . MakePath('dependencies/tags/cpp')
+    exec 'set tags+=' . MakePath('dependencies/tags/sdl2')
 " }}}
 
 " vim file/folder management {{{
@@ -90,15 +93,15 @@ let s:dotvim_path = s:settings.dotvim_path
     " persistent undo
     if exists('+undofile')
         set undofile
-        exec ':set undodir=' . s:dotvim_path . '/.cache/undo'
+        exec ':set undodir=' . MakePath('.cache/undo')
     endif
 
     " backups
     set backup
-    exec ':set backupdir=' . s:dotvim_path . '/.cache/backup'
+    exec ':set backupdir=' . MakePath('.cache/backup')
 
     " swap files
-    exec 'set directory=' . s:dotvim_path . '/.cache/swap'
+    exec 'set directory=' . MakePath('.cache/swap')
     set noswapfile
 
     call EnsureExists(&undodir)

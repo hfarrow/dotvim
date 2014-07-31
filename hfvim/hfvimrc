@@ -4,7 +4,7 @@ let g:hfvim = {}
 let g:hfvim.settings = {}
 let s:settings = g:hfvim.settings
 
-let s:settings.dotvim_path = '~/.vim'
+let s:settings.dotvim_path = '~/.vim/'
 
 "remap leader key
 let mapleader = ','
@@ -35,8 +35,8 @@ for key in keys(s:settings)
     endif
 endfor
 
-exec ':source ' . s:settings.dotvim_path . '/hfvim/utils.vim'
-call EnsureExists(s:settings.dotvim_path . '/.cache')
+exec ':source ' . s:settings.dotvim_path . 'hfvim/utils.vim'
+call EnsureExists(MakePath('.cache'))
 
 call Source('hfvim/bundle_groups.vim')
 call Source('hfvim/bundles.vim')

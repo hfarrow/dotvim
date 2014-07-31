@@ -7,7 +7,7 @@ let g:hfvim_settings.expected_major_version = 1
 let g:hfvim_settings.bundle_groups_included = ['cpp', 'actionscript', 'haxe', 'javascript', 'python']
 let g:hfvim_settings.disabled_bundles = []
 
-let g:hfvim_settings.dotvim_path = '~/.vim'
+let g:hfvim_settings.dotvim_path = '~/.vim/'
 
 " ==========================================================
 " Source hfvim to initialize the distribution
