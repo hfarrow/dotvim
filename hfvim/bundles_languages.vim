@@ -7,7 +7,7 @@ endif
 
 if count(s:settings.bundle_groups, 'actionscript')
     NeoBundleLazy 'jeroenbourgois/vim-actionscript', {'autoload' : {'filetypes' : ['actionscript']}} " {{{
-    
+
 endif
 
 if count(s:settings.bundle_groups, 'haxe')

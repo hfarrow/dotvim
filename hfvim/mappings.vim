@@ -9,15 +9,19 @@ inoremap <C-l> <right>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 
-" Auto center
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
-nnoremap <silent> g# g#zz
-nnoremap <silent> <C-o> <C-o>zz
-nnoremap <silent> <C-i> <C-i>zz
+" Auto center {{{
+    nnoremap <silent> n nzz
+    nnoremap <silent> N Nzz
+    " make * stay on current word
+    nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+    nnoremap <silent> # #zz:PulseIfEnabled<cr>
+    nnoremap <silent> g* g*zz:PulseIfEnabled<cr>
+    nnoremap <silent> g# g#zz:PulseIfEnabled<cr>
+    nnoremap <silent> <C-o> <C-o>zz:PulseIfEnabled<cr>
+    nnoremap <silent> <C-i> <C-i>zz:PulseIfEnabled<cr>
+    nnoremap <silent> <leader>p :Pulse<cr>
+    inoremap <silent> <leader>p <esc>:Pulse<cr>a
+" }}}
 
 " reselect visual block after indent
 vnoremap < <gv
@@ -34,8 +38,14 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Easier to type and I don't use the default behaivour
+noremap H ^
+noremap L $
+vnoremap L g_
+
 " clear highlight
-nnoremap <cr> :set hlsearch! hlsearch?<cr>
+noremap <silent> <cr> :noh<cr>:call clearmatches()<cr>
+nnoremap <leader><space> :set hlsearch! hlsearch?<cr>
 
 " S = Stamp replace word with last yanked text
 nnoremap S diw"0P
@@ -71,6 +81,28 @@ map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " Clean trailing whitespace
 nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
+" Source
+vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
+nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
 " Select entire buffer
 nnoremap vaa ggvGg_
 nnoremap Vaa ggVG
+
+" Highlight Word {{{
+    " highlighting words temporarily similar to *.
+    " Thanks Steve Losh
+    nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+    nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+    nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+    nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+    nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+    nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
+
+    hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+    hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+    hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+    hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+    hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+    hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+" }}}

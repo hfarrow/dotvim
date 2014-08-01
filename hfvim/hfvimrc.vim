@@ -1,3 +1,14 @@
+" hfvim
+" Author: Heath Farrow <heath.farrow@gmail.com>
+" Source: https://github.com/hfarrow/dotvim
+"
+" Special thanks goes to all the great vim users from whom I have borrowed countless
+" numbers of snippets, functions, and ideas.
+"
+" This vimrc is broken into mutliple files that are sourced. Each bundle group has its
+" own file. General utility functions are in utils.vim. Settings and mapping are in their 
+" respective .vim files.
+
 set nocompatible
 
 let g:hfvim = {}
@@ -36,6 +47,10 @@ for key in keys(s:settings)
 endfor
 
 exec ':source ' . s:settings.dotvim_path . 'hfvim/utils.vim'
+if has('vim_starting')
+    exec 'set runtimepath+=' . MakePath('hfvim')
+endif
+
 call EnsureExists(MakePath('.cache'))
 
 call Source('hfvim/bundle_groups.vim')
