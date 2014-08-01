@@ -23,8 +23,7 @@ let s:settings = g:hfvim.settings
         "colorscheme two2tango
 
         colorscheme wombat256
-        " make wombat256 play nice with gitgutter
-        hi clear SignColumn
+        hi clear SignColumn "make wombat256 play nice with gitgutter
 
     "endif
 " }}}
@@ -46,32 +45,60 @@ let s:settings = g:hfvim.settings
 
 " Searching {{{
     set hlsearch                            "Highlight searches
-    set incsearch                           "incremental searching
+    set incsearch                           "incremental searchinet
     set ignorecase                          "ignore case for searching
     set smartcase                           "do case-sensitive if there's a capital letter
+" }}}
+
+" Folding {{{
+    "set foldenable                          "enable folds by default
+    "set foldmethod=syntax                   "fold via syntax of files
+    "set foldlevelstart=99                   "open all folds by default
+    set nofoldenable
+    "let g:xml_syntax_folding=1              "enable xml folding
 " }}}
 
 " Misc {{{
     set number                              "line numbers
     set showmatch                           "highlight matching braces
     set comments=sl:/*,mb:\ *,elx:\ */      "intelligent comments
-    "set textwidth=160                       "wrap lines at 120 chars. 
+    set textwidth=112                       "wrap lines
+    set formatoptions=qrn1j
     set mouse=a                             "enable mouse
     set history=1000                        "number of command lines to remember
     set ttyfast                             "assume fast terminal connection
-    "set showcmd                             "show information in last line of editor
-    "set foldenable                          "enable folds by default
-    "set foldmethod=syntax                   "fold via syntax of files
-    "set foldlevelstart=99                   "open all folds by default
-    set nofoldenable
-    "let g:xml_syntax_folding=1              "enable xml folding
-    set updatetime=1000                      "not reccomended to be below 1000 due to glitches in terminal
+    set updatetime=1000                      "not recommended to be below 1000 due to glitches in terminal
+    set list
+    set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+    set hidden
+    set showmode
+    set showcmd
+    set visualbell
+    set lazyredraw
+    set matchtime=3
+    set showbreak=↪
+    set splitbelow
+    set splitright
+    set autowrite
+    set autoread
+    set shiftround
+    set title
+    set linebreak
+    set colorcolumn=+1
+    set synmaxcol=800                       "Don't try to highlight lines longer than 800 characters.
+    set backupskip=/tmp/*,/private/tmp/*"   "Make Vim able to edit crontab files again.
+
+    " Time out on key codes but not mappings.
+    " Basically this makes terminal Vim work sanely.
+    set notimeout
+    set ttimeout
+    set ttimeoutlen=10
 " }}}
 
 " Tabs {{{
     set autoindent                          "use indentation of previous line"
     set smartindent                         "use intelligent indentation
-    
+
     " configure tabwidth and insert spaces instead of tabs
     set tabstop=4                           "tab width is 4 spaces
     set shiftwidth=4                        "indent also with 4 spaces
@@ -90,7 +117,7 @@ let s:settings = g:hfvim.settings
     if has('viminfo')
         set vi^=!
     endif
-    
+
     " persistent undo
     if exists('+undofile')
         set undofile
@@ -109,3 +136,34 @@ let s:settings = g:hfvim.settings
     call EnsureExists(&backupdir)
     call EnsureExists(&directory)
 " }}}
+
+" auto groups {{{
+    " Do not show trailing whtite space in insert mode.
+    augroup trailing
+        au!
+        au InsertEnter * :set listchars-=trail:⌴
+        au InsertLeave * :set listchars+=trail:⌴
+    augroup END
+
+    " Only show cursorline in the current window and in normal mode.
+    augroup cline
+        au!
+        au WinLeave,InsertEnter * set nocursorline
+        au WinEnter,InsertLeave * set cursorline
+    augroup END
+
+    " Make sure Vim returns to the same line when you reopen a file.
+    augroup line_return
+        au!
+        au BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \     execute 'normal! g`"zvzz' |
+            \ endif
+    augroup END
+
+    " Save when losing focus
+    au FocusLost * :silent! wall
+
+    " Resize splits when the window is resized
+    au VimResized * :wincmd =
+"}}}

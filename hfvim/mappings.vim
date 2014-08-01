@@ -68,3 +68,9 @@ nnoremap <leader>nbu :Unite neobundle/update -vertical -no-start-insert<cr>
 " Generate ctags
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+" Clean trailing whitespace
+nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+
+" Select entire buffer
+nnoremap vaa ggvGg_
+nnoremap Vaa ggVG

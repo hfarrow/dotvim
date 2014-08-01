@@ -7,13 +7,11 @@ let g:hfvim_settings.expected_major_version = 1
 let g:hfvim_settings.bundle_groups_included = ['cpp', 'actionscript', 'haxe', 'javascript', 'python']
 let g:hfvim_settings.disabled_bundles = []
 
-let g:hfvim_settings.dotvim_path = '~/.vim/'
-
 " ==========================================================
 " Source hfvim to initialize the distribution
 " ==========================================================
-so ~/.vim.new/hfvim/hfvimrc
+so ~/.vim/hfvim/hfvimrc.vim
 
-" if has('gui_running')
-"     set guifont=Inconsolata\ for\ Powerline:h14
-" endif
+set guifont=Inconsolata\ for\ Powerline:h14
+
+nnoremap <leader>te :exec 'e ' . MakePath('configs/vimrc_work.vim')
