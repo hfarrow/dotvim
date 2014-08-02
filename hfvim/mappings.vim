@@ -9,6 +9,10 @@ inoremap <C-l> <right>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 
+" Pulse cursor line to help locate cursor
+nnoremap <silent> <C-p> :Pulse<cr>
+inoremap <silent> <C-p> <esc>:Pulse<cr>aj
+
 " Auto center {{{
     nnoremap <silent> n nzz
     nnoremap <silent> N Nzz
@@ -19,8 +23,6 @@ inoremap <C-k> <up>
     nnoremap <silent> g# g#zz:PulseIfEnabled<cr>
     nnoremap <silent> <C-o> <C-o>zz:PulseIfEnabled<cr>
     nnoremap <silent> <C-i> <C-i>zz:PulseIfEnabled<cr>
-    nnoremap <silent> <leader>p :Pulse<cr>
-    inoremap <silent> <leader>p <esc>:Pulse<cr>a
 " }}}
 
 " reselect visual block after indent

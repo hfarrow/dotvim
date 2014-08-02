@@ -111,10 +111,11 @@ let s:settings = g:hfvim.settings
     set backupskip=/tmp/*,/private/tmp/*"   "Make Vim able to edit crontab files again.
 
     " Time out on key codes but not mappings.
-    " Basically this makes terminal Vim work sanely.
     set notimeout
     set ttimeout
     set ttimeoutlen=10
+    "cancel out of a mapping and re-enter insert mode. ie: j<C-d>j to insert 'jj'
+    inoremap <C-d> <esc>a 
 " }}}
 " Tabs {{{
     set autoindent                          "use indentation of previous line"
