@@ -6,7 +6,7 @@
 " numbers of snippets, functions, and ideas.
 "
 " This vimrc is broken into mutliple files that are sourced. Each bundle group has its
-" own file. General utility functions are in utils.vim. Settings and mapping are in their 
+" own file. General utility functions are in utils.vim. Settings and mapping are in their
 " respective .vim files.
 
 set nocompatible

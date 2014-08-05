@@ -18,7 +18,7 @@ if count(s:settings.bundle_groups, 'misc')
         let Tlist_Enable_Fold_Column = 0
 
         map <leader>l :TlistToggle<CR>
-        
+
         call neobundle#untap()
     endif
 

@@ -74,11 +74,11 @@ if count(s:settings.bundle_groups, 'unite')
         nnoremap <silent> [unite]h :<C-u>Unite -start-insert help<CR>
         nnoremap <silent> [unite]H :<C-u><C-u>UniteWithCursorWord help<CR>
         nnoremap <silent> [unite]M :<C-u>UniteBookmarkAdd<cr><cr>
-        
+
         " Search for word under cursor
         nmap <silent> [unite]w [unite]/<C-r><C-w><cr>
 
-        map <C-F11> <Plug>(unite_redraw)  
+        map <C-F11> <Plug>(unite_redraw)
 
         call neobundle#untap()
     endif

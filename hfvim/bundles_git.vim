@@ -16,7 +16,7 @@ if count(s:settings.bundle_groups, 'git')
         function! neobundle#tapped.hooks.on_post_source(bundle)
             doautoall fugitive BufNewFile
         endfunction
-        
+
         " Unite Menu for Git Command
         let g:unite_source_menu_menus.git = {
         \ 'description' : '             Common Git Commands

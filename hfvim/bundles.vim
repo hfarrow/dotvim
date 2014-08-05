@@ -8,9 +8,9 @@ endif
 " Use git protocol.
 " let g:neobundle#types#git#default_protocol = 'git'
 
-"=============================================================== 
+"===============================================================
 " Start Bundles
-"=============================================================== 
+"===============================================================
 call neobundle#begin(expand(MakePath('bundle')))
     " Let NeoBundle manage NeoBundle
     NeoBundleFetch 'Shougo/neobundle.vim'
@@ -25,7 +25,7 @@ call neobundle#begin(expand(MakePath('bundle')))
     call Source('hfvim/bundles_languages.vim')
 call neobundle#end()
 " End Bundles
-"=============================================================== 
+"===============================================================
 
 filetype plugin indent on
 
