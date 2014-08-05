@@ -21,12 +21,15 @@ let s:settings = g:hfvim.settings
         "colorscheme symfony
         "colorscheme two2tango
 
-        colorscheme wombat256
-        "make wombat256 play nice with gitgutter
-        hi clear SignColumn 
-        "make ColorColumn same as CursorLine
-        hi ColorColumn term=underline guibg=#32322e ctermbg=235 
-
+        colorscheme wombat256 " {{{
+            " make non text characters (line breaks) less noticable
+            hi clear NonText
+            hi link NonText Normal
+            "make wombat256 play nice with gitgutter
+            hi clear SignColumn
+            "make ColorColumn same as CursorLine
+            hi ColorColumn term=underline guibg=#32322e ctermbg=235
+        " }}}
     "endif
 " }}}
 " Encoding {{{
@@ -115,7 +118,7 @@ let s:settings = g:hfvim.settings
     set ttimeout
     set ttimeoutlen=10
     "cancel out of a mapping and re-enter insert mode. ie: j<C-d>j to insert 'jj'
-    inoremap <C-d> <esc>a 
+    inoremap <C-d> <esc>a
 " }}}
 " Tabs {{{
     set autoindent                          "use indentation of previous line"
@@ -131,6 +134,12 @@ let s:settings = g:hfvim.settings
     set showfulltag                         "show entire tag when completing from tags
     exec 'set tags+=' . MakePath('dependencies/tags/cpp')
     exec 'set tags+=' . MakePath('dependencies/tags/sdl2')
+" }}}
+" Spelling {{{
+    exec 'set spellfile+=' . MakePath('dependencies/spelling/custom-dictionary.utf-8.add')
+    exec 'set spellfile+=' . '~/.vim-local-dictionary.utf-8.add'
+    call EnsureExists(MakePath('dependencies/spelling//'))
+    nnoremap zG 2zg
 " }}}
 " vim file/folder management {{{
     " persistent viminfo
