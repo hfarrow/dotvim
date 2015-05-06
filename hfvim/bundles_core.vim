@@ -23,5 +23,5 @@ if count(s:settings.bundle_groups, 'core')
         let g:airline_powerline_fonts=1
         let g:airline#extensions#tabline#enabled = 1
         set laststatus=2
-    NeoBundleLazy 'Lokaltog/powerline'
+    NeoBundle 'tpope/vim-dispatch'
 endif

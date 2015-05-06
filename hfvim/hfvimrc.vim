@@ -22,6 +22,7 @@ let mapleader = ','
 let g:mapleader = ','
 
 let s:settings.debug = 0
+let s:settings.training_mode = 0
 
 let g:hfvim.version_major = 1
 let g:hfvim.version_minor = 0
@@ -57,3 +58,6 @@ call Source('hfvim/bundle_groups.vim')
 call Source('hfvim/bundles.vim')
 call Source('hfvim/settings.vim')
 call Source('hfvim/mappings.vim')
+if s:settings.training_mode == 1
+    call Source('hfvim/training.vim')
+endif

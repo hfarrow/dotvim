@@ -47,7 +47,7 @@ let s:settings = g:hfvim.settings
     set hlsearch                            "Highlight searches
     set incsearch                           "incremental searchinet
     set ignorecase                          "ignore case for searching
-    set smartcase                           "do case-sensitive if there's a capital letter
+"    set smartcase                           "do case-sensitive if there's a capital letter
 " }}}
 " Folding {{{
     set foldlevelstart=99
@@ -112,6 +112,7 @@ let s:settings = g:hfvim.settings
     set colorcolumn=+1
     set synmaxcol=800                       "Don't try to highlight lines longer than 800 characters.
     set backupskip=/tmp/*,/private/tmp/*"   "Make Vim able to edit crontab files again.
+    set cmdheight=2                         "Remove 'Press Enter to continue' message when type information is longer than one line."
 
     " Time out on key codes but not mappings.
     set notimeout

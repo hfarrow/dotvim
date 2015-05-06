@@ -12,6 +12,14 @@ if count(s:settings.bundle_groups, 'git')
         \                'Gvdiff', 'Gmove', 'Gremove', 'Gblame', 'Gbrowse']}
         \ }
 
+    if neobundle#tap('vim-gitgutter')
+        " gitgutter conflicts with YouCompleteMe
+        " May need to add other filetypes here that also use YCM
+        " au BufEnter * if &filetype != "cpp" | exec "GitGutterEnable" | endif
+        " au BufEnter * if &filetype == "cpp" | exec "GitGutterDisable" | endif
+        call neobundle#untap()
+    endif
+
     if neobundle#tap('vim-fugitive')
         function! neobundle#tapped.hooks.on_post_source(bundle)
             doautoall fugitive BufNewFile

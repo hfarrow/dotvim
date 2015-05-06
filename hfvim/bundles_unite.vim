@@ -31,7 +31,7 @@ if count(s:settings.bundle_groups, 'unite')
             call EnsureExists(MakePath('.cache/unite'))
             call unite#filters#matcher_default#use(['matcher_fuzzy'])
             call unite#filters#sorter_default#use(['sorter_rank'])
-            call unite#set_profile('files', 'smartcase', 1)
+            " call unite#set_profile('files', 'smartcase', 1)
             call unite#custom#source('line,outline', 'matchers', 'matcher_fuzzy')
 
             let g:unite_data_directory=MakePath('.cache/unite')
@@ -86,6 +86,8 @@ if count(s:settings.bundle_groups, 'unite')
     if neobundle#tap('vimfiler.vim')
         nnoremap <silent> [unite]t :<C-u>VimFilerExplorer<CR>
         nnoremap <silent> [unite]T :<C-u>VimFiler<CR>
+        let g:vimfiler_as_default_explorer = 1
+        let g:vimfiler_safe_mode_by_default = 0
         call neobundle#untap()
     endif
 

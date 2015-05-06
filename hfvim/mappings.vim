@@ -1,3 +1,6 @@
+nmap ; [altlead]
+vmap ; [altlead]
+
 " Leave insert mode
 inoremap jj <esc>
 inoremap jk <esc>
@@ -47,7 +50,7 @@ vnoremap L g_
 
 " clear highlight
 noremap <silent> <cr> :noh<cr>:call clearmatches()<cr>
-nnoremap <leader><space> :set hlsearch! hlsearch?<cr>
+nnoremap <leader><cr> :set hlsearch! hlsearch?<cr>
 
 " S = Stamp replace word with last yanked text
 nnoremap S diw"0P
@@ -91,6 +94,13 @@ nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 nnoremap vaa ggvGg_
 nnoremap Vaa ggVG
 
+" Format json
+nnoremap <leader>jf :%!python -m json.tool<CR>
+
+" File Navigation {{{
+   nnoremap <C-s> :bp<cr>
+   nnoremap <C-d> :bn<cr>
+" }}}
 " Highlight Word {{{
     " highlighting words temporarily similar to *.
     " Thanks Steve Losh

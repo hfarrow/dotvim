@@ -9,6 +9,7 @@ let g:hfvim_settings.disabled_bundles = []
 
 let g:hfvim_settings.dotvim_path = '~/.vim/'
 
+let g:hfvim_settings.training_mode = 1
 " ==========================================================
 " Source hfvim to initialize the distribution
 " ==========================================================

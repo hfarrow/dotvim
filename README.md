@@ -6,7 +6,7 @@ This repository contains a vim distribution created by and for Heath Farrow.
 Installation
 ---------------------------
 1. Install gvim or mvim (optional). Your vim build needs to support (lua, python, ruby, perl). Below are some examples of how vim should probably be configured
-    
+
     Manual:
     ```
      ./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --with-lua-prefix=/usr/local -with-luajit --enable-cscope
@@ -42,22 +42,22 @@ Installation
 7.  If you get errors about missing dependecies when installing then run the installation for those plugins manually
     to see what errors may have been encountered. For example, you must have a valid default compiler set in order
     to build YouCompleteMe.
-    
+
     For linux:
     ```
     sudo apt-get install exuberent-ctags
 
     cd ~/.vim/bundle/vimproc
     make -f make_unix.mak
-    
+
     cd ~/.vim/bundle/YouCompleteMe
     git submodule update --init --recursive
-    ./install.sh --clang-completer
-    
+    ./install.sh --clang-completer --omnisharp-completer
+
     cd ~/.vim/bundle/powerline
     ./setup.py build
     sudo ./setup.py install
-    
+
     TODO: instructions for jshint
     ```
 

@@ -13,6 +13,8 @@ call add(s:settings.bundle_groups, 'actionscript')
 call add(s:settings.bundle_groups, 'haxe')
 call add(s:settings.bundle_groups, 'javascript')
 call add(s:settings.bundle_groups, 'python')
+call add(s:settings.bundle_groups, 'rust')
+call add(s:settings.bundle_groups, "cs")
 
 let s:settings.gui_bundles = []
 
