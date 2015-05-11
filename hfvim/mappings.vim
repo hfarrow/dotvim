@@ -94,9 +94,6 @@ nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 nnoremap vaa ggvGg_
 nnoremap Vaa ggVG
 
-" Format json
-nnoremap <leader>jf :%!python -m json.tool<CR>
-
 " File Navigation {{{
    nnoremap <C-s> :bp<cr>
    nnoremap <C-d> :bn<cr>

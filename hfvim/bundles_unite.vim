@@ -42,6 +42,11 @@ if count(s:settings.bundle_groups, 'unite')
             let g:unite_source_grep_max_candidates=20000
             let g:unite_prompt='» '
 
+            " Use start insert by default.
+            call unite#custom#profile('default', 'context', {
+            \   'direction' : 'botright'
+            \ })
+
             if executable('ag')
                 let g:unite_source_grep_command='ag'
                 let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C0'
@@ -88,6 +93,7 @@ if count(s:settings.bundle_groups, 'unite')
         nnoremap <silent> [unite]T :<C-u>VimFiler<CR>
         let g:vimfiler_as_default_explorer = 1
         let g:vimfiler_safe_mode_by_default = 0
+        let g:vimfiler_ignore_pattern = '\%(.meta\|.DS_Store\)$'
         call neobundle#untap()
     endif
 
