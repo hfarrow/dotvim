@@ -54,10 +54,6 @@ Installation
     git submodule update --init --recursive
     ./install.sh --clang-completer --omnisharp-completer
 
-    cd ~/.vim/bundle/powerline
-    ./setup.py build
-    sudo ./setup.py install
-
     TODO: instructions for jshint
     ```
 
