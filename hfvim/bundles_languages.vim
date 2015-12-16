@@ -12,7 +12,14 @@ endif
 
 if count(s:settings.bundle_groups, 'haxe')
     NeoBundleLazy 'jdonaldson/vaxe', {'autoload' : {'filetypes' : ['haxe']}} " {{{
-        set autowrite
+
+    if neobundle#tap('vaxe')
+        function! neobundle#hooks.on_source(bundle)
+            nnoremap [altlead]v<F12> :call haxe#Ctags
+            nnoremap [altlead]vi :call haxe#ImportClass
+        endfunction
+        call neobundle#untap()
+    endif
 endif
 
 if count(s:settings.bundle_groups, 'javascript')
@@ -44,6 +51,7 @@ if count(s:settings.bundle_groups, 'rust')
 endif
 
 if count(s:settings.bundle_groups, "cs")
+    NeoBundleLazy 'OrangeT/vim-csharp', {'autoload' : {'filetypes' : ['cs']}}
     NeoBundleLazy 'OmniSharp/omnisharp-vim', {'autoload' : {'filetypes' : ['cs']}}
 
 

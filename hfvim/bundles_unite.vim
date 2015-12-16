@@ -42,10 +42,11 @@ if count(s:settings.bundle_groups, 'unite')
             let g:unite_source_grep_max_candidates=20000
             let g:unite_prompt='» '
 
-            " Use start insert by default.
-            call unite#custom#profile('default', 'context', {
-            \   'direction' : 'botright'
-            \ })
+            " When using botright, the first row is not selected... it's off by 10.
+            " I would prefer botright but I need to debug the problem above.
+            " call unite#custom#profile('default', 'context', {
+            " \   'direction' : 'botright'
+            " \ })
 
             if executable('ag')
                 let g:unite_source_grep_command='ag'
