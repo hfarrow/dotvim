@@ -54,6 +54,10 @@ if count(s:settings.bundle_groups, "cs")
     NeoBundleLazy 'OrangeT/vim-csharp', {'autoload' : {'filetypes' : ['cs']}}
     NeoBundleLazy 'OmniSharp/omnisharp-vim', {'autoload' : {'filetypes' : ['cs']}}
 
+    " TODO: build server automatically when plugin is installed
+    " cd omnisharp-vim/server
+    " xbuild
+
 
     " Get Code Issues and syntax errors
     let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
@@ -61,6 +65,10 @@ if count(s:settings.bundle_groups, "cs")
     " If you are using the omnisharp-roslyn backend, use the following
     " let g:syntastic_cs_checkers = ['code_checker']
     " let g:OmniSharp_server_type = 'roslyn'
+
+    let g:Omnisharp_start_server = 0
+    let g:Omnisharp_stop_server = 0
+    let g:OmniSharp_timeout = 3
 
     if neobundle#tap('omnisharp-vim')
         function! neobundle#hooks.on_source(bundle)
@@ -88,10 +96,6 @@ if count(s:settings.bundle_groups, "cs")
             nnoremap [altlead]h :OmniSharpHighlightTypes<cr>
         endfunction
 
-        let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
-
-        " If you are using the omnisharp-roslyn backend, use the following
-        " let g:syntastic_cs_checkers = ['code_checker']
         augroup omnisharp_commands
             autocmd!
 

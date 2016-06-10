@@ -12,6 +12,11 @@ inoremap <C-l> <right>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 
+" Quick Fix Bindings
+nnoremap <silent> [q :cn<cr>
+nnoremap <silent> ]q :cp<cr>
+nnoremap <silent> [] :cc<cr>
+
 " Pulse cursor line to help locate cursor
 nnoremap <silent> <C-p> :Pulse<cr>
 inoremap <silent> <C-p> <esc>:Pulse<cr>aj
