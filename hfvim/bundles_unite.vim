@@ -92,6 +92,7 @@ if count(s:settings.bundle_groups, 'unite')
     if neobundle#tap('vimfiler.vim')
         nnoremap <silent> [unite]t :<C-u>VimFilerExplorer<CR>
         nnoremap <silent> [unite]T :<C-u>VimFiler<CR>
+        nnoremap <silent> [unite]e :<C-u>VimFilerExplorer -find<CR>
         let g:vimfiler_as_default_explorer = 1
         let g:vimfiler_safe_mode_by_default = 0
         let g:vimfiler_ignore_pattern = '\%(.meta\|.DS_Store\)$'
