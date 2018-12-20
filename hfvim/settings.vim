@@ -40,7 +40,6 @@ let s:settings = g:hfvim.settings
 " }}}
 " Insert Mode {{{
     " Allow backspace to always delete to left of cursor.
-    set backspace=2
     set backspace=indent,eol,start
 " }}}
 " Searching {{{

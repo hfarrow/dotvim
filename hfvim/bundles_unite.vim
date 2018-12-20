@@ -7,6 +7,8 @@ if count(s:settings.bundle_groups, 'unite')
     NeoBundleLazy 'Shougo/unite-help', {'depends' : 'Shougo/unite.vim', 'on_source' : 'unite.vim'}
     NeoBundleLazy 'Shougo/neomru.vim', {'depends' : 'Shougo/unite.vim', 'on_source' : 'unite.vim'}
     NeoBundleLazy 'Shougo/unite-session', {'depends' : 'Shougo/unite.vim', 'on_source' : 'unite.vim'}
+    NeoBundleLazy 'Shougo/unite-outline', {'depends' : 'Shougo/unite.vim', 'on_source' : 'unite.vim'}
+    NeoBundleLazy 'Shougo/neoyank.vim', {'depends' : 'Shougo/unite.vim', 'on_source' : 'unite.vim'}
     NeoBundleLazy 'Shougo/vimfiler.vim', {
         \ 'depends' : 'Shougo/unite.vim',
         \ 'commands' : [
@@ -24,7 +26,6 @@ if count(s:settings.bundle_groups, 'unite')
         \ 'mappings' : '<Plug>(vimfiler_',
         \ 'explorer' : 1,
         \ }
-    NeoBundleLazy 'Shougo/unite-outline'
 
     if neobundle#tap('unite.vim')
         function! neobundle#hooks.on_source(bundle)

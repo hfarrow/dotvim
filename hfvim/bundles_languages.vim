@@ -66,8 +66,8 @@ if count(s:settings.bundle_groups, "cs")
     " let g:syntastic_cs_checkers = ['code_checker']
     " let g:OmniSharp_server_type = 'roslyn'
 
-    let g:Omnisharp_start_server = 0
-    let g:Omnisharp_stop_server = 0
+    " let g:Omnisharp_start_server = 0
+    " let g:Omnisharp_stop_server = 0
     let g:OmniSharp_timeout = 10
 
     if neobundle#tap('omnisharp-vim')
